@@ -1,0 +1,498 @@
+{
+  "dependency_path": "results/dependency.json",
+  "benchmark_path": "data/sgd_micro_10_full.jsonl",
+  "prediction_path": "results/predictions.jsonl",
+  "respect_mutex": true,
+  "metrics": {
+    "edge_accuracy": 1.0,
+    "case_accuracy": 1.0,
+    "avg_latency": 143.1,
+    "avg_running_time_ms": 0.30108739999999967
+  },
+  "results": [
+    {
+      "case_id": "case_000000",
+      "prediction": {
+        "case_id": "case_000000",
+        "completion_time": {
+          "agent_000": 96,
+          "agent_001": 194,
+          "agent_002": 40,
+          "agent_003": 109,
+          "agent_004": 85
+        }
+      },
+      "schedule_summary": {
+        "latency": 194,
+        "oriented_mutex_dedup_edges": [],
+        "final_dependency_edges": [
+          {
+            "before": "agent_000",
+            "after": "agent_001",
+            "reasons": [
+              "data_dependency: output/input match 'token:internal_record_key:field:media_3:starring'"
+            ]
+          },
+          {
+            "before": "agent_002",
+            "after": "agent_003",
+            "reasons": [
+              "data_dependency: output/input match 'token:internal_record_key:field:services_4:address'"
+            ]
+          }
+        ]
+      },
+      "dependency_summary": {
+        "num_agents": 5,
+        "num_mandatory_edges": 2,
+        "num_mutex_pairs": 0,
+        "num_dedup_required_pairs": 0
+      },
+      "schedule_check": {
+        "valid": true,
+        "latency": 194,
+        "num_agents": 5,
+        "errors": []
+      },
+      "errors": [],
+      "runtime_ms": 0.42716599999999966
+    },
+    {
+      "case_id": "case_000001",
+      "prediction": {
+        "case_id": "case_000001",
+        "completion_time": {
+          "agent_000": 97,
+          "agent_001": 188,
+          "agent_002": 63
+        }
+      },
+      "schedule_summary": {
+        "latency": 188,
+        "oriented_mutex_dedup_edges": [],
+        "final_dependency_edges": [
+          {
+            "before": "agent_000",
+            "after": "agent_001",
+            "reasons": [
+              "state_read_write: reader needs latest/final state for field:flights_1:outbound_departure_time"
+            ]
+          }
+        ]
+      },
+      "dependency_summary": {
+        "num_agents": 3,
+        "num_mandatory_edges": 1,
+        "num_mutex_pairs": 0,
+        "num_dedup_required_pairs": 0
+      },
+      "schedule_check": {
+        "valid": true,
+        "latency": 188,
+        "num_agents": 3,
+        "errors": []
+      },
+      "errors": [],
+      "runtime_ms": 0.15987499999999683
+    },
+    {
+      "case_id": "case_000002",
+      "prediction": {
+        "case_id": "case_000002",
+        "completion_time": {
+          "agent_000": 81,
+          "agent_001": 93,
+          "agent_002": 173,
+          "agent_003": 52,
+          "agent_004": 108
+        }
+      },
+      "schedule_summary": {
+        "latency": 173,
+        "oriented_mutex_dedup_edges": [
+          {
+            "before": "agent_003",
+            "after": "agent_004",
+            "source": "dedup_required_pairs",
+            "reasons": [
+              "dedup_required: duplicate non-idempotent side effect on side_effect:evt_000002_00003:flights_1_api:reserveroundtripflights"
+            ]
+          }
+        ],
+        "final_dependency_edges": [
+          {
+            "before": "agent_000",
+            "after": "agent_001",
+            "reasons": [
+              "data_dependency: output/input match 'token:internal_record_key:field:services_3:average_rating'"
+            ]
+          },
+          {
+            "before": "agent_001",
+            "after": "agent_002",
+            "reasons": [
+              "state_read_write: reader needs latest/final state for field:services_3:average_rating"
+            ]
+          },
+          {
+            "before": "agent_003",
+            "after": "agent_004",
+            "reasons": [
+              "dedup_required: duplicate non-idempotent side effect on side_effect:evt_000002_00003:flights_1_api:reserveroundtripflights",
+              "duplicate_side_effect_key: same non-idempotent side-effect target serialized by canonical agent-id order on side_effect:evt_000002_00003:flights_1_api:reserveroundtripflights"
+            ]
+          }
+        ]
+      },
+      "dependency_summary": {
+        "num_agents": 5,
+        "num_mandatory_edges": 3,
+        "num_mutex_pairs": 0,
+        "num_dedup_required_pairs": 1
+      },
+      "schedule_check": {
+        "valid": true,
+        "latency": 173,
+        "num_agents": 5,
+        "errors": []
+      },
+      "errors": [],
+      "runtime_ms": 0.2917909999999996
+    },
+    {
+      "case_id": "case_000003",
+      "prediction": {
+        "case_id": "case_000003",
+        "completion_time": {
+          "agent_000": 67,
+          "agent_001": 134,
+          "agent_002": 158,
+          "agent_003": 28,
+          "agent_004": 56
+        }
+      },
+      "schedule_summary": {
+        "latency": 158,
+        "oriented_mutex_dedup_edges": [
+          {
+            "before": "agent_003",
+            "after": "agent_004",
+            "source": "dedup_required_pairs",
+            "reasons": [
+              "dedup_required: duplicate non-idempotent side effect on side_effect:evt_000003_00003:rentalcars_1_api:reservecar"
+            ]
+          }
+        ],
+        "final_dependency_edges": [
+          {
+            "before": "agent_000",
+            "after": "agent_001",
+            "reasons": [
+              "data_dependency: output/input match 'token:internal_record_key:field:restaurants_2:restaurant_name'"
+            ]
+          },
+          {
+            "before": "agent_001",
+            "after": "agent_002",
+            "reasons": [
+              "state_read_write: reader needs latest/final state for field:restaurants_2:restaurant_name"
+            ]
+          },
+          {
+            "before": "agent_003",
+            "after": "agent_004",
+            "reasons": [
+              "dedup_required: duplicate non-idempotent side effect on side_effect:evt_000003_00003:rentalcars_1_api:reservecar",
+              "duplicate_side_effect_key: same non-idempotent side-effect target serialized by canonical agent-id order on side_effect:evt_000003_00003:rentalcars_1_api:reservecar"
+            ]
+          }
+        ]
+      },
+      "dependency_summary": {
+        "num_agents": 5,
+        "num_mandatory_edges": 3,
+        "num_mutex_pairs": 0,
+        "num_dedup_required_pairs": 1
+      },
+      "schedule_check": {
+        "valid": true,
+        "latency": 158,
+        "num_agents": 5,
+        "errors": []
+      },
+      "errors": [],
+      "runtime_ms": 0.9307920000000067
+    },
+    {
+      "case_id": "case_000004",
+      "prediction": {
+        "case_id": "case_000004",
+        "completion_time": {
+          "agent_000": 89,
+          "agent_001": 120,
+          "agent_002": 65
+        }
+      },
+      "schedule_summary": {
+        "latency": 120,
+        "oriented_mutex_dedup_edges": [],
+        "final_dependency_edges": [
+          {
+            "before": "agent_000",
+            "after": "agent_001",
+            "reasons": [
+              "data_dependency: output/input match 'token:internal_record_key:field:flights_1:origin_city'"
+            ]
+          }
+        ]
+      },
+      "dependency_summary": {
+        "num_agents": 3,
+        "num_mandatory_edges": 1,
+        "num_mutex_pairs": 0,
+        "num_dedup_required_pairs": 0
+      },
+      "schedule_check": {
+        "valid": true,
+        "latency": 120,
+        "num_agents": 3,
+        "errors": []
+      },
+      "errors": [],
+      "runtime_ms": 0.09149999999999436
+    },
+    {
+      "case_id": "case_000005",
+      "prediction": {
+        "case_id": "case_000005",
+        "completion_time": {
+          "agent_000": 99,
+          "agent_001": 178,
+          "agent_002": 200,
+          "agent_003": 43,
+          "agent_004": 59
+        }
+      },
+      "schedule_summary": {
+        "latency": 200,
+        "oriented_mutex_dedup_edges": [
+          {
+            "before": "agent_003",
+            "after": "agent_004",
+            "source": "dedup_required_pairs",
+            "reasons": [
+              "dedup_required: duplicate non-idempotent side effect on side_effect:evt_000005_00003:hotels_2_api:bookhouse"
+            ]
+          }
+        ],
+        "final_dependency_edges": [
+          {
+            "before": "agent_000",
+            "after": "agent_001",
+            "reasons": [
+              "data_dependency: output/input match 'token:internal_record_key:field:homes_2:phone_number'"
+            ]
+          },
+          {
+            "before": "agent_001",
+            "after": "agent_002",
+            "reasons": [
+              "state_read_write: reader needs latest/final state for field:homes_2:phone_number"
+            ]
+          },
+          {
+            "before": "agent_003",
+            "after": "agent_004",
+            "reasons": [
+              "dedup_required: duplicate non-idempotent side effect on side_effect:evt_000005_00003:hotels_2_api:bookhouse",
+              "duplicate_side_effect_key: same non-idempotent side-effect target serialized by canonical agent-id order on side_effect:evt_000005_00003:hotels_2_api:bookhouse"
+            ]
+          }
+        ]
+      },
+      "dependency_summary": {
+        "num_agents": 5,
+        "num_mandatory_edges": 3,
+        "num_mutex_pairs": 0,
+        "num_dedup_required_pairs": 1
+      },
+      "schedule_check": {
+        "valid": true,
+        "latency": 200,
+        "num_agents": 5,
+        "errors": []
+      },
+      "errors": [],
+      "runtime_ms": 0.500417000000003
+    },
+    {
+      "case_id": "case_000006",
+      "prediction": {
+        "case_id": "case_000006",
+        "completion_time": {
+          "agent_000": 33,
+          "agent_001": 58,
+          "agent_002": 28
+        }
+      },
+      "schedule_summary": {
+        "latency": 58,
+        "oriented_mutex_dedup_edges": [],
+        "final_dependency_edges": [
+          {
+            "before": "agent_000",
+            "after": "agent_001",
+            "reasons": [
+              "state_read_write: reader needs latest/final state for field:flights_1:origin_city"
+            ]
+          }
+        ]
+      },
+      "dependency_summary": {
+        "num_agents": 3,
+        "num_mandatory_edges": 1,
+        "num_mutex_pairs": 0,
+        "num_dedup_required_pairs": 0
+      },
+      "schedule_check": {
+        "valid": true,
+        "latency": 58,
+        "num_agents": 3,
+        "errors": []
+      },
+      "errors": [],
+      "runtime_ms": 0.06354199999999977
+    },
+    {
+      "case_id": "case_000007",
+      "prediction": {
+        "case_id": "case_000007",
+        "completion_time": {
+          "agent_000": 74,
+          "agent_001": 133,
+          "agent_002": 30,
+          "agent_003": 56,
+          "agent_004": 50
+        }
+      },
+      "schedule_summary": {
+        "latency": 133,
+        "oriented_mutex_dedup_edges": [],
+        "final_dependency_edges": [
+          {
+            "before": "agent_000",
+            "after": "agent_001",
+            "reasons": [
+              "data_dependency: output/input match 'token:internal_record_key:field:hotels_1:check_in_date'"
+            ]
+          },
+          {
+            "before": "agent_002",
+            "after": "agent_003",
+            "reasons": [
+              "data_dependency: output/input match 'token:internal_record_key:field:services_3:street_address'"
+            ]
+          }
+        ]
+      },
+      "dependency_summary": {
+        "num_agents": 5,
+        "num_mandatory_edges": 2,
+        "num_mutex_pairs": 0,
+        "num_dedup_required_pairs": 0
+      },
+      "schedule_check": {
+        "valid": true,
+        "latency": 133,
+        "num_agents": 5,
+        "errors": []
+      },
+      "errors": [],
+      "runtime_ms": 0.31854199999999805
+    },
+    {
+      "case_id": "case_000008",
+      "prediction": {
+        "case_id": "case_000008",
+        "completion_time": {
+          "agent_000": 53,
+          "agent_001": 63,
+          "agent_002": 47
+        }
+      },
+      "schedule_summary": {
+        "latency": 63,
+        "oriented_mutex_dedup_edges": [],
+        "final_dependency_edges": [
+          {
+            "before": "agent_000",
+            "after": "agent_001",
+            "reasons": [
+              "state_read_write: reader needs latest/final state for field:music_3:album"
+            ]
+          }
+        ]
+      },
+      "dependency_summary": {
+        "num_agents": 3,
+        "num_mandatory_edges": 1,
+        "num_mutex_pairs": 0,
+        "num_dedup_required_pairs": 0
+      },
+      "schedule_check": {
+        "valid": true,
+        "latency": 63,
+        "num_agents": 3,
+        "errors": []
+      },
+      "errors": [],
+      "runtime_ms": 0.058915999999999136
+    },
+    {
+      "case_id": "case_000009",
+      "prediction": {
+        "case_id": "case_000009",
+        "completion_time": {
+          "agent_000": 97,
+          "agent_001": 144,
+          "agent_002": 24,
+          "agent_003": 82
+        }
+      },
+      "schedule_summary": {
+        "latency": 144,
+        "oriented_mutex_dedup_edges": [],
+        "final_dependency_edges": [
+          {
+            "before": "agent_000",
+            "after": "agent_001",
+            "reasons": [
+              "data_dependency: output/input match 'token:internal_record_key:field:payment_1:amount'"
+            ]
+          },
+          {
+            "before": "agent_002",
+            "after": "agent_003",
+            "reasons": [
+              "data_dependency: output/input match 'token:internal_record_key:field:buses_1:to_location'"
+            ]
+          }
+        ]
+      },
+      "dependency_summary": {
+        "num_agents": 4,
+        "num_mandatory_edges": 2,
+        "num_mutex_pairs": 0,
+        "num_dedup_required_pairs": 0
+      },
+      "schedule_check": {
+        "valid": true,
+        "latency": 144,
+        "num_agents": 4,
+        "errors": []
+      },
+      "errors": [],
+      "runtime_ms": 0.16833299999999968
+    }
+  ]
+}

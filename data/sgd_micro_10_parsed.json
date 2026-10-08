@@ -1,0 +1,761 @@
+{
+  "cases": [
+    {
+      "case_id": "case_000000",
+      "agent_tasks": [
+        {
+          "agent_id": "agent_000",
+          "description": "Locate the internal system record key for the Celebs acting in the movie field (starring) for the PlayMovie task in Media_3: Watch the movie instantly online with your preferred subtitles.",
+          "inputs": [],
+          "outputs": [
+            "token:internal_record_key:field:media_3:starring"
+          ],
+          "reads": [],
+          "writes": [],
+          "effect": "read_only",
+          "idempotent": true
+        },
+        {
+          "agent_id": "agent_001",
+          "description": "Update the Celebs acting in the movie field (starring) for the PlayMovie task in Media_3: Watch the movie instantly online with your preferred subtitles to 'Harper Lin' using its internal operational record key.",
+          "inputs": [
+            "token:internal_record_key:field:media_3:starring"
+          ],
+          "outputs": [],
+          "reads": [],
+          "writes": [
+            {
+              "raw": "field:media_3:starring",
+              "key": "field:media_3:starring",
+              "mode": "set",
+              "value": "Harper Lin"
+            }
+          ],
+          "effect": "internal_write",
+          "idempotent": true
+        },
+        {
+          "agent_id": "agent_004",
+          "description": "Check the current visible state of the Date for the appointment field (appointment_date) for the BookAppointment task in Services_1: Book an appointment at a hair stylist as a read-only request.",
+          "inputs": [],
+          "outputs": [],
+          "reads": [
+            {
+              "raw": "field:services_1:appointment_date",
+              "key": "field:services_1:appointment_date",
+              "freshness": "current"
+            }
+          ],
+          "writes": [],
+          "effect": "read_only",
+          "idempotent": true
+        },
+        {
+          "agent_id": "agent_002",
+          "description": "Identify the internal operational record key for the Address of the therapist field (address) for the BookAppointment task in Services_4: Make a reservation with the therapist based on user's wish.",
+          "inputs": [],
+          "outputs": [
+            "token:internal_record_key:field:services_4:address"
+          ],
+          "reads": [],
+          "writes": [],
+          "effect": "read_only",
+          "idempotent": true
+        },
+        {
+          "agent_id": "agent_003",
+          "description": "Update the Address of the therapist field (address) for the BookAppointment task in Services_4: Make a reservation with the therapist based on user's wish to 'Morgan Davis' using its internal operational record key.",
+          "inputs": [
+            "token:internal_record_key:field:services_4:address"
+          ],
+          "outputs": [],
+          "reads": [],
+          "writes": [
+            {
+              "raw": "field:services_4:address",
+              "key": "field:services_4:address",
+              "mode": "set",
+              "value": "Morgan Davis"
+            }
+          ],
+          "effect": "internal_write",
+          "idempotent": true
+        }
+      ]
+    },
+    {
+      "case_id": "case_000001",
+      "agent_tasks": [
+        {
+          "agent_id": "agent_002",
+          "description": "Read the heading of the Alarm_1 service guide for AddAlarm: Manage alarms by getting and setting them easily document without modifying any record.",
+          "inputs": [],
+          "outputs": [],
+          "reads": [
+            {
+              "raw": "heading of the Alarm_1 service guide",
+              "key": "document:alarm_1:service_guide:heading",
+              "freshness": "current"
+            }
+          ],
+          "writes": [],
+          "effect": "read_only",
+          "idempotent": true
+        },
+        {
+          "agent_id": "agent_000",
+          "description": "Revise the Departure time for the outbound leg flight field (outbound_departure_time) for the ReserveOnewayFlight task in Flights_1: Reserve a one-way flight so it reflects '16:30'.",
+          "inputs": [],
+          "outputs": [],
+          "reads": [],
+          "writes": [
+            {
+              "raw": "outbound_departure_time",
+              "key": "field:flights_1:outbound_departure_time",
+              "mode": "set",
+              "value": "16:30"
+            }
+          ],
+          "effect": "internal_write",
+          "idempotent": false
+        },
+        {
+          "agent_id": "agent_001",
+          "description": "Provide the latest settled value recorded for the Departure time for the outbound leg flight field (outbound_departure_time) for the ReserveOnewayFlight task in Flights_1: Reserve a one-way flight.",
+          "inputs": [],
+          "outputs": [],
+          "reads": [
+            {
+              "raw": "latest settled value for outbound_departure_time",
+              "key": "field:flights_1:outbound_departure_time",
+              "freshness": "latest"
+            }
+          ],
+          "writes": [],
+          "effect": "read_only",
+          "idempotent": true
+        }
+      ]
+    },
+    {
+      "case_id": "case_000002",
+      "agent_tasks": [
+        {
+          "agent_id": "agent_000",
+          "description": "Locate the internal system record key for the Average review rating of the doctor field (average_rating) for the BookAppointment task in Services_3: Book an appointment with a specific doctor for the given date and time.",
+          "inputs": [],
+          "outputs": [
+            "token:internal_record_key:field:services_3:average_rating"
+          ],
+          "reads": [],
+          "writes": [],
+          "effect": "read_only",
+          "idempotent": true
+        },
+        {
+          "agent_id": "agent_004",
+          "description": "Issue the ReserveRoundtripFlights transactional API call on the Flights_1-api channel for event EVT-000002-00003, using the latest confirmed Arrival time for the outbound leg flight field (outbound_arrival_time) for the ReserveRoundtripFlights task in Flights_1: Reserve a round-trip flight. Use deduplication scope EVT-000002-00003/Flights_1-api/ReserveRoundtripFlights/SGD-25001.",
+          "inputs": [
+            "token:internal_record_key:field:flights_1:outbound_arrival_time"
+          ],
+          "outputs": [],
+          "reads": [
+            {
+              "raw": "latest confirmed Arrival time for the outbound leg flight field (outbound_arrival_time)",
+              "key": "field:flights_1:outbound_arrival_time",
+              "freshness": "latest"
+            }
+          ],
+          "writes": [
+            {
+              "raw": "ReserveRoundtripFlights transactional API call",
+              "key": "side_effect:evt_000002_00003:flights_1_api:ReserveRoundtripFlights",
+              "mode": "send",
+              "value": ""
+            }
+          ],
+          "effect": "external_side_effect",
+          "idempotent": false
+        },
+        {
+          "agent_id": "agent_002",
+          "description": "Read the final confirmed state of the Average review rating of the doctor field (average_rating) for the BookAppointment task in Services_3: Book an appointment with a specific doctor for the given date and time.",
+          "inputs": [],
+          "outputs": [],
+          "reads": [
+            {
+              "raw": "final confirmed state of the Average review rating of the doctor field (average_rating)",
+              "key": "field:services_3:average_rating",
+              "freshness": "latest"
+            }
+          ],
+          "writes": [],
+          "effect": "read_only",
+          "idempotent": true
+        },
+        {
+          "agent_id": "agent_003",
+          "description": "Trigger the ReserveRoundtripFlights transactional API call through the Flights_1-api channel for event EVT-000002-00003, using the final settled Arrival time for the outbound leg flight field (outbound_arrival_time) for the ReserveRoundtripFlights task in Flights_1: Reserve a round-trip flight. Use deduplication scope EVT-000002-00003/Flights_1-api/ReserveRoundtripFlights/SGD-25001.",
+          "inputs": [
+            "token:internal_record_key:field:flights_1:outbound_arrival_time"
+          ],
+          "outputs": [],
+          "reads": [
+            {
+              "raw": "final settled Arrival time for the outbound leg flight field (outbound_arrival_time)",
+              "key": "field:flights_1:outbound_arrival_time",
+              "freshness": "latest"
+            }
+          ],
+          "writes": [
+            {
+              "raw": "ReserveRoundtripFlights transactional API call",
+              "key": "side_effect:evt_000002_00003:flights_1_api:ReserveRoundtripFlights",
+              "mode": "send",
+              "value": ""
+            }
+          ],
+          "effect": "external_side_effect",
+          "idempotent": false
+        },
+        {
+          "agent_id": "agent_001",
+          "description": "Apply 'Morgan Davis' to the Average review rating of the doctor field (average_rating) for the BookAppointment task in Services_3: Book an appointment with a specific doctor for the given date and time through the resolved internal system record key.",
+          "inputs": [
+            "token:internal_record_key:field:services_3:average_rating"
+          ],
+          "outputs": [],
+          "reads": [],
+          "writes": [
+            {
+              "raw": "Apply 'Morgan Davis' to the Average review rating",
+              "key": "field:services_3:average_rating",
+              "mode": "set",
+              "value": "Morgan Davis"
+            }
+          ],
+          "effect": "internal_write",
+          "idempotent": false
+        }
+      ]
+    },
+    {
+      "case_id": "case_000003",
+      "agent_tasks": [
+        {
+          "agent_id": "agent_003",
+          "description": "Issue the ReserveCar transactional API call on the RentalCars_1-api channel for event EVT-000003-00003, using the latest confirmed Model name of rental car field (car_name) for the ReserveCar task in RentalCars_1: Reserve car rental for given dates and location. Use deduplication scope EVT-000003-00003/RentalCars_1-api/ReserveCar/SGD-35001.",
+          "inputs": [
+            "token:internal_record_key:field:rentalcars_1:car_name"
+          ],
+          "outputs": [],
+          "reads": [
+            {
+              "raw": "latest confirmed Model name of rental car field (car_name)",
+              "key": "field:rentalcars_1:car_name",
+              "freshness": "latest"
+            }
+          ],
+          "writes": [
+            {
+              "raw": "ReserveCar transactional API call",
+              "key": "side_effect:evt_000003-00003:rentalcars_1_api:ReserveCar",
+              "mode": "send",
+              "value": ""
+            }
+          ],
+          "effect": "external_side_effect",
+          "idempotent": false
+        },
+        {
+          "agent_id": "agent_000",
+          "description": "Find the internal record key used to operate on the Name of the restaurant field (restaurant_name) for the ReserveRestaurant task in Restaurants_2: Make a table reservation at a restaurant.",
+          "inputs": [],
+          "outputs": [
+            "token:internal_record_key:field:restaurants_2:restaurant_name"
+          ],
+          "reads": [],
+          "writes": [],
+          "effect": "read_only",
+          "idempotent": true
+        },
+        {
+          "agent_id": "agent_001",
+          "description": "Revise the Name of the restaurant field (restaurant_name) for the ReserveRestaurant task in Restaurants_2: Make a table reservation at a restaurant to 'Summit Legal' using the internal record key for that same field.",
+          "inputs": [
+            "token:internal_record_key:field:restaurants_2:restaurant_name"
+          ],
+          "outputs": [],
+          "reads": [],
+          "writes": [
+            {
+              "raw": "Revise the Name of the restaurant field",
+              "key": "field:restaurants_2:restaurant_name",
+              "mode": "set",
+              "value": "Summit Legal"
+            }
+          ],
+          "effect": "internal_write",
+          "idempotent": true
+        },
+        {
+          "agent_id": "agent_004",
+          "description": "Trigger the ReserveCar transactional API call through the RentalCars_1-api channel for event EVT-000003-00003, using the final settled Model name of rental car field (car_name) for the ReserveCar task in RentalCars_1: Reserve car rental for given dates and location. Use deduplication scope EVT-000003-00003/RentalCars_1-api/ReserveCar/SGD-35001.",
+          "inputs": [
+            "token:internal_record_key:field:rentalcars_1:car_name"
+          ],
+          "outputs": [],
+          "reads": [
+            {
+              "raw": "final settled Model name of rental car field (car_name)",
+              "key": "field:rentalcars_1:car_name",
+              "freshness": "latest"
+            }
+          ],
+          "writes": [
+            {
+              "raw": "ReserveCar transactional API call",
+              "key": "side_effect:evt_000003-00003:rentalcars_1_api:ReserveCar",
+              "mode": "send",
+              "value": ""
+            }
+          ],
+          "effect": "external_side_effect",
+          "idempotent": false
+        },
+        {
+          "agent_id": "agent_002",
+          "description": "Read the final confirmed state of the Name of the restaurant field (restaurant_name) for the ReserveRestaurant task in Restaurants_2: Make a table reservation at a restaurant.",
+          "inputs": [],
+          "outputs": [],
+          "reads": [
+            {
+              "raw": "final confirmed state of the Name of the restaurant field (restaurant_name)",
+              "key": "field:restaurants_2:restaurant_name",
+              "freshness": "latest"
+            }
+          ],
+          "writes": [],
+          "effect": "read_only",
+          "idempotent": true
+        }
+      ]
+    },
+    {
+      "case_id": "case_000004",
+      "agent_tasks": [
+        {
+          "agent_id": "agent_000",
+          "description": "Locate the internal system record key for the Starting city for the trip field (origin_city) for the ReserveRoundtripFlights task in Flights_1: Reserve a round-trip flight.",
+          "inputs": [],
+          "outputs": [
+            "token:internal_record_key:field:flights_1:origin_city"
+          ],
+          "reads": [],
+          "writes": [],
+          "effect": "read_only",
+          "idempotent": true
+        },
+        {
+          "agent_id": "agent_001",
+          "description": "Update the Starting city for the trip field (origin_city) for the ReserveRoundtripFlights task in Flights_1: Reserve a round-trip flight to 'North Lab' using its internal operational record key.",
+          "inputs": [
+            "token:internal_record_key:field:flights_1:origin_city"
+          ],
+          "outputs": [],
+          "reads": [],
+          "writes": [
+            {
+              "raw": "field:flights_1:origin_city",
+              "key": "field:flights_1:origin_city",
+              "mode": "set",
+              "value": "North Lab"
+            }
+          ],
+          "effect": "internal_write",
+          "idempotent": true
+        },
+        {
+          "agent_id": "agent_002",
+          "description": "Inspect the present value of the Name of the accommodation field (place_name) for the ReserveHotel task in Hotels_4: Reserve rooms at a selected place for given dates without modifying it.",
+          "inputs": [],
+          "outputs": [],
+          "reads": [
+            {
+              "raw": "field:hotels_4:place_name",
+              "key": "field:hotels_4:place_name",
+              "freshness": "current"
+            }
+          ],
+          "writes": [],
+          "effect": "read_only",
+          "idempotent": true
+        }
+      ]
+    },
+    {
+      "case_id": "case_000005",
+      "agent_tasks": [
+        {
+          "agent_id": "agent_001",
+          "description": "Revise the Contact number of property or apartment complex field (phone_number) for the ScheduleVisit task in Homes_2: Schedule a visit to a property on a given date to '5' using the internal record key for that same field.",
+          "inputs": [
+            "token:internal_record_key:field:homes_2:phone_number"
+          ],
+          "outputs": [],
+          "reads": [],
+          "writes": [
+            {
+              "raw": "field:homes_2:phone_number",
+              "key": "field:homes_2:phone_number",
+              "mode": "set",
+              "value": "5"
+            }
+          ],
+          "effect": "internal_write",
+          "idempotent": true
+        },
+        {
+          "agent_id": "agent_004",
+          "description": "Trigger the BookHouse transactional API call through the Hotels_2-api channel for event EVT-000005-00003, using the final settled End date for the reservation or to find the house field (check_out_date) for the BookHouse task in Hotels_2: Book the selected house for given dates and number of adults. Use deduplication scope EVT-000005-00003/Hotels_2-api/BookHouse/SGD-55001.",
+          "inputs": [
+            "token:internal_record_key:field:hotels_2:check_out_date"
+          ],
+          "outputs": [],
+          "reads": [
+            {
+              "raw": "field:hotels_2:check_out_date",
+              "key": "field:hotels_2:check_out_date",
+              "freshness": "latest"
+            }
+          ],
+          "writes": [
+            {
+              "raw": "side_effect:evt_000005_00003:hotels_2_api:bookhouse",
+              "key": "side_effect:evt_000005_00003:hotels_2_api:bookhouse",
+              "mode": "send",
+              "value": ""
+            }
+          ],
+          "effect": "external_side_effect",
+          "idempotent": false
+        },
+        {
+          "agent_id": "agent_002",
+          "description": "Provide the latest settled value recorded for the Contact number of property or apartment complex field (phone_number) for the ScheduleVisit task in Homes_2: Schedule a visit to a property on a given date.",
+          "inputs": [],
+          "outputs": [
+            "token:validation:field:homes_2:phone_number"
+          ],
+          "reads": [
+            {
+              "raw": "field:homes_2:phone_number",
+              "key": "field:homes_2:phone_number",
+              "freshness": "latest"
+            }
+          ],
+          "writes": [],
+          "effect": "read_only",
+          "idempotent": true
+        },
+        {
+          "agent_id": "agent_000",
+          "description": "Locate the internal system record key for the Contact number of property or apartment complex field (phone_number) for the ScheduleVisit task in Homes_2: Schedule a visit to a property on a given date.",
+          "inputs": [],
+          "outputs": [
+            "token:internal_record_key:field:homes_2:phone_number"
+          ],
+          "reads": [],
+          "writes": [],
+          "effect": "read_only",
+          "idempotent": true
+        },
+        {
+          "agent_id": "agent_003",
+          "description": "Trigger the BookHouse transactional API call through the Hotels_2-api channel for event EVT-000005-00003, using the final settled End date for the reservation or to find the house field (check_out_date) for the BookHouse task in Hotels_2: Book the selected house for given dates and number of adults. Use deduplication scope EVT-000005-00003/Hotels_2-api/BookHouse/SGD-55001.",
+          "inputs": [
+            "token:internal_record_key:field:hotels_2:check_out_date"
+          ],
+          "outputs": [],
+          "reads": [
+            {
+              "raw": "field:hotels_2:check_out_date",
+              "key": "field:hotels_2:check_out_date",
+              "freshness": "latest"
+            }
+          ],
+          "writes": [
+            {
+              "raw": "side_effect:evt_000005_00003:hotels_2_api:bookhouse",
+              "key": "side_effect:evt_000005_00003:hotels_2_api:bookhouse",
+              "mode": "send",
+              "value": ""
+            }
+          ],
+          "effect": "external_side_effect",
+          "idempotent": false
+        }
+      ]
+    },
+    {
+      "case_id": "case_000006",
+      "agent_tasks": [
+        {
+          "agent_id": "agent_001",
+          "description": "Provide the latest settled value recorded for the Starting city for the trip field (origin_city) for the ReserveOnewayFlight task in Flights_1: Reserve a one-way flight.",
+          "inputs": [],
+          "outputs": [],
+          "reads": [
+            {
+              "raw": "latest settled value recorded for the Starting city for the trip field (origin_city)",
+              "key": "field:flights_1:origin_city",
+              "freshness": "latest"
+            }
+          ],
+          "writes": [],
+          "effect": "read_only",
+          "idempotent": true
+        },
+        {
+          "agent_id": "agent_002",
+          "description": "Read the heading of the Media_3 service guide for PlayMovie: Enjoy instant and unlimited access to best shows, movies, comedy, sports, documentaries and more. document without modifying any record.",
+          "inputs": [],
+          "outputs": [],
+          "reads": [
+            {
+              "raw": "heading of the Media_3 service guide",
+              "key": "document:media_3:service_guide",
+              "freshness": "current"
+            }
+          ],
+          "writes": [],
+          "effect": "read_only",
+          "idempotent": true
+        },
+        {
+          "agent_id": "agent_000",
+          "description": "Revise the Starting city for the trip field (origin_city) for the ReserveOnewayFlight task in Flights_1: Reserve a one-way flight so it reflects 'Cedar Center'.",
+          "inputs": [],
+          "outputs": [],
+          "reads": [],
+          "writes": [
+            {
+              "raw": "Starting city for the trip field (origin_city)",
+              "key": "field:flights_1:origin_city",
+              "mode": "set",
+              "value": "Cedar Center"
+            }
+          ],
+          "effect": "internal_write",
+          "idempotent": false
+        }
+      ]
+    },
+    {
+      "case_id": "case_000007",
+      "agent_tasks": [
+        {
+          "agent_id": "agent_002",
+          "description": "Find the internal record key used to operate on the Address of the doctor field (street_address) for the BookAppointment task in Services_3: Book an appointment with a specific doctor for the given date and time.",
+          "inputs": [],
+          "outputs": [
+            "token:internal_record_key:field:services_3:street_address"
+          ],
+          "reads": [],
+          "writes": [],
+          "effect": "read_only",
+          "idempotent": true
+        },
+        {
+          "agent_id": "agent_001",
+          "description": "Apply '2026-05-02' to the Start date for the reservation field (check_in_date) for the ReserveHotel task in Hotels_1: Reserve a selected hotel for given dates through the resolved internal system record key.",
+          "inputs": [
+            "token:internal_record_key:field:hotels_1:check_in_date"
+          ],
+          "outputs": [],
+          "reads": [],
+          "writes": [
+            {
+              "raw": "2026-05-02",
+              "key": "field:hotels_1:check_in_date",
+              "mode": "set",
+              "value": "2026-05-02"
+            }
+          ],
+          "effect": "internal_write",
+          "idempotent": true
+        },
+        {
+          "agent_id": "agent_003",
+          "description": "Apply 'Jamie Nguyen' to the Address of the doctor field (street_address) for the BookAppointment task in Services_3: Book an appointment with a specific doctor for the given date and time through the resolved internal system record key.",
+          "inputs": [
+            "token:internal_record_key:field:services_3:street_address"
+          ],
+          "outputs": [],
+          "reads": [],
+          "writes": [
+            {
+              "raw": "Jamie Nguyen",
+              "key": "field:services_3:street_address",
+              "mode": "set",
+              "value": "Jamie Nguyen"
+            }
+          ],
+          "effect": "internal_write",
+          "idempotent": true
+        },
+        {
+          "agent_id": "agent_004",
+          "description": "Inspect the present value of the Name of the contact or account to make the transaction with field (receiver) for the RequestPayment task in Payment_1: Request payment from someone without modifying it.",
+          "inputs": [],
+          "outputs": [],
+          "reads": [
+            {
+              "raw": "field:payment_1:receiver",
+              "key": "field:payment_1:receiver",
+              "freshness": "current"
+            }
+          ],
+          "writes": [],
+          "effect": "read_only",
+          "idempotent": true
+        },
+        {
+          "agent_id": "agent_000",
+          "description": "Find the internal record key used to operate on the Start date for the reservation field (check_in_date) for the ReserveHotel task in Hotels_1: Reserve a selected hotel for given dates.",
+          "inputs": [],
+          "outputs": [
+            "token:internal_record_key:field:hotels_1:check_in_date"
+          ],
+          "reads": [],
+          "writes": [],
+          "effect": "read_only",
+          "idempotent": true
+        }
+      ]
+    },
+    {
+      "case_id": "case_000008",
+      "agent_tasks": [
+        {
+          "agent_id": "agent_002",
+          "description": "Summarize the title line of the Services_4 service guide for BookAppointment: Discover the right therapist for you and make reservations easily document without changing it.",
+          "inputs": [],
+          "outputs": [],
+          "reads": [
+            {
+              "raw": "title line of the Services_4 service guide",
+              "key": "field:services_4:title_line",
+              "freshness": "current"
+            }
+          ],
+          "writes": [],
+          "effect": "read_only",
+          "idempotent": true
+        },
+        {
+          "agent_id": "agent_000",
+          "description": "Revise the Collection of the song field (album) for the PlayMedia task in Music_3: Play the music so it reflects 'enterprise'.",
+          "inputs": [],
+          "outputs": [],
+          "reads": [],
+          "writes": [
+            {
+              "raw": "Collection of the song field (album)",
+              "key": "field:music_3:album",
+              "mode": "set",
+              "value": "enterprise"
+            }
+          ],
+          "effect": "internal_write",
+          "idempotent": false
+        },
+        {
+          "agent_id": "agent_001",
+          "description": "Return the final confirmed value of the Collection of the song field (album) for the PlayMedia task in Music_3: Play the music.",
+          "inputs": [],
+          "outputs": [
+            "token:internal_record_key:field:music_3:album"
+          ],
+          "reads": [
+            {
+              "raw": "Collection of the song field (album)",
+              "key": "field:music_3:album",
+              "freshness": "latest"
+            }
+          ],
+          "writes": [],
+          "effect": "read_only",
+          "idempotent": true
+        }
+      ]
+    },
+    {
+      "case_id": "case_000009",
+      "agent_tasks": [
+        {
+          "agent_id": "agent_000",
+          "description": "Find the internal record key used to operate on the The amount of money to send or request field (amount) for the MakePayment task in Payment_1: Send money to your friends.",
+          "inputs": [],
+          "outputs": [
+            "token:internal_record_key:field:payment_1:amount"
+          ],
+          "reads": [],
+          "writes": [],
+          "effect": "read_only",
+          "idempotent": true
+        },
+        {
+          "agent_id": "agent_003",
+          "description": "Apply 'Delta Wing' to the City where bus is going to field (to_location) for the BuyBusTicket task in Buses_1: Buy tickets for a bus journey through the resolved internal system record key.",
+          "inputs": [
+            "token:internal_record_key:field:buses_1:to_location"
+          ],
+          "outputs": [],
+          "reads": [],
+          "writes": [
+            {
+              "raw": "Delta Wing",
+              "key": "field:buses_1:to_location",
+              "mode": "set",
+              "value": "Delta Wing"
+            }
+          ],
+          "effect": "internal_write",
+          "idempotent": false
+        },
+        {
+          "agent_id": "agent_001",
+          "description": "Revise the The amount of money to send or request field (amount) for the MakePayment task in Payment_1: Send money to your friends to 'Taylor Johnson' using the internal record key for that same field.",
+          "inputs": [
+            "token:internal_record_key:field:payment_1:amount"
+          ],
+          "outputs": [],
+          "reads": [],
+          "writes": [
+            {
+              "raw": "'Taylor Johnson'",
+              "key": "field:payment_1:amount",
+              "mode": "set",
+              "value": "'Taylor Johnson'"
+            }
+          ],
+          "effect": "internal_write",
+          "idempotent": false
+        },
+        {
+          "agent_id": "agent_002",
+          "description": "Find the internal record key used to operate on the City where bus is going to field (to_location) for the BuyBusTicket task in Buses_1: Buy tickets for a bus journey.",
+          "inputs": [],
+          "outputs": [
+            "token:internal_record_key:field:buses_1:to_location"
+          ],
+          "reads": [],
+          "writes": [],
+          "effect": "read_only",
+          "idempotent": true
+        }
+      ]
+    }
+  ]
+}

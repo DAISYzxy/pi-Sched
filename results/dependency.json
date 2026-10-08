@@ -1,0 +1,379 @@
+{
+  "source_path": "data/sgd_micro_10_parsed.json",
+  "schema": {
+    "mandatory_edges": {
+      "before": "agent_id",
+      "after": "agent_id",
+      "reasons": "list[str]"
+    },
+    "mutex_pairs": {
+      "agents": "list[agent_id, agent_id]",
+      "reasons": "list[str]"
+    },
+    "dedup_required_pairs": {
+      "agents": "list[agent_id, agent_id]",
+      "reasons": "list[str]",
+      "meaning": "serializing alone may still be unsafe because operations look like duplicate non-idempotent side effects"
+    },
+    "has_mandatory_cycle": "boolean",
+    "mandatory_cycle_components": "list[list[agent_id]]",
+    "scheduling": "not_implemented"
+  },
+  "num_cases": 10,
+  "num_agent_tasks": 41,
+  "num_mandatory_edges": 19,
+  "num_mutex_pairs": 0,
+  "num_dedup_required_pairs": 3,
+  "num_cases_with_mandatory_cycles": 0,
+  "metrics": {
+    "total_runtime_ms": 3.910790999999997,
+    "avg_case_runtime_ms": 0.3366082999999992,
+    "progress_timing": []
+  },
+  "cases": [
+    {
+      "case_id": "case_000000",
+      "num_agent_tasks": 5,
+      "agents": [
+        "agent_000",
+        "agent_001",
+        "agent_004",
+        "agent_002",
+        "agent_003"
+      ],
+      "mandatory_edges": [
+        {
+          "before": "agent_000",
+          "after": "agent_001",
+          "reasons": [
+            "data_dependency: output/input match 'token:internal_record_key:field:media_3:starring'"
+          ]
+        },
+        {
+          "before": "agent_002",
+          "after": "agent_003",
+          "reasons": [
+            "data_dependency: output/input match 'token:internal_record_key:field:services_4:address'"
+          ]
+        }
+      ],
+      "mutex_pairs": [],
+      "dedup_required_pairs": [],
+      "has_mandatory_cycle": false,
+      "mandatory_cycle_components": [],
+      "warnings": [],
+      "runtime_ms": 0.5062079999999941
+    },
+    {
+      "case_id": "case_000001",
+      "num_agent_tasks": 3,
+      "agents": [
+        "agent_002",
+        "agent_000",
+        "agent_001"
+      ],
+      "mandatory_edges": [
+        {
+          "before": "agent_000",
+          "after": "agent_001",
+          "reasons": [
+            "state_read_write: reader needs latest/final state for field:flights_1:outbound_departure_time"
+          ]
+        }
+      ],
+      "mutex_pairs": [],
+      "dedup_required_pairs": [],
+      "has_mandatory_cycle": false,
+      "mandatory_cycle_components": [],
+      "warnings": [],
+      "runtime_ms": 0.17266700000000135
+    },
+    {
+      "case_id": "case_000002",
+      "num_agent_tasks": 5,
+      "agents": [
+        "agent_000",
+        "agent_004",
+        "agent_002",
+        "agent_003",
+        "agent_001"
+      ],
+      "mandatory_edges": [
+        {
+          "before": "agent_000",
+          "after": "agent_001",
+          "reasons": [
+            "data_dependency: output/input match 'token:internal_record_key:field:services_3:average_rating'"
+          ]
+        },
+        {
+          "before": "agent_003",
+          "after": "agent_004",
+          "reasons": [
+            "duplicate_side_effect_key: same non-idempotent side-effect target serialized by canonical agent-id order on side_effect:evt_000002_00003:flights_1_api:reserveroundtripflights"
+          ]
+        },
+        {
+          "before": "agent_001",
+          "after": "agent_002",
+          "reasons": [
+            "state_read_write: reader needs latest/final state for field:services_3:average_rating"
+          ]
+        }
+      ],
+      "mutex_pairs": [],
+      "dedup_required_pairs": [
+        {
+          "agents": [
+            "agent_004",
+            "agent_003"
+          ],
+          "reasons": [
+            "dedup_required: duplicate non-idempotent side effect on side_effect:evt_000002_00003:flights_1_api:reserveroundtripflights"
+          ]
+        }
+      ],
+      "has_mandatory_cycle": false,
+      "mandatory_cycle_components": [],
+      "warnings": [],
+      "runtime_ms": 0.6305409999999984
+    },
+    {
+      "case_id": "case_000003",
+      "num_agent_tasks": 5,
+      "agents": [
+        "agent_003",
+        "agent_000",
+        "agent_001",
+        "agent_004",
+        "agent_002"
+      ],
+      "mandatory_edges": [
+        {
+          "before": "agent_003",
+          "after": "agent_004",
+          "reasons": [
+            "duplicate_side_effect_key: same non-idempotent side-effect target serialized by canonical agent-id order on side_effect:evt_000003_00003:rentalcars_1_api:reservecar"
+          ]
+        },
+        {
+          "before": "agent_000",
+          "after": "agent_001",
+          "reasons": [
+            "data_dependency: output/input match 'token:internal_record_key:field:restaurants_2:restaurant_name'"
+          ]
+        },
+        {
+          "before": "agent_001",
+          "after": "agent_002",
+          "reasons": [
+            "state_read_write: reader needs latest/final state for field:restaurants_2:restaurant_name"
+          ]
+        }
+      ],
+      "mutex_pairs": [],
+      "dedup_required_pairs": [
+        {
+          "agents": [
+            "agent_003",
+            "agent_004"
+          ],
+          "reasons": [
+            "dedup_required: duplicate non-idempotent side effect on side_effect:evt_000003_00003:rentalcars_1_api:reservecar"
+          ]
+        }
+      ],
+      "has_mandatory_cycle": false,
+      "mandatory_cycle_components": [],
+      "warnings": [],
+      "runtime_ms": 0.5490000000000078
+    },
+    {
+      "case_id": "case_000004",
+      "num_agent_tasks": 3,
+      "agents": [
+        "agent_000",
+        "agent_001",
+        "agent_002"
+      ],
+      "mandatory_edges": [
+        {
+          "before": "agent_000",
+          "after": "agent_001",
+          "reasons": [
+            "data_dependency: output/input match 'token:internal_record_key:field:flights_1:origin_city'"
+          ]
+        }
+      ],
+      "mutex_pairs": [],
+      "dedup_required_pairs": [],
+      "has_mandatory_cycle": false,
+      "mandatory_cycle_components": [],
+      "warnings": [],
+      "runtime_ms": 0.1652089999999995
+    },
+    {
+      "case_id": "case_000005",
+      "num_agent_tasks": 5,
+      "agents": [
+        "agent_001",
+        "agent_004",
+        "agent_002",
+        "agent_000",
+        "agent_003"
+      ],
+      "mandatory_edges": [
+        {
+          "before": "agent_001",
+          "after": "agent_002",
+          "reasons": [
+            "state_read_write: reader needs latest/final state for field:homes_2:phone_number"
+          ]
+        },
+        {
+          "before": "agent_000",
+          "after": "agent_001",
+          "reasons": [
+            "data_dependency: output/input match 'token:internal_record_key:field:homes_2:phone_number'"
+          ]
+        },
+        {
+          "before": "agent_003",
+          "after": "agent_004",
+          "reasons": [
+            "duplicate_side_effect_key: same non-idempotent side-effect target serialized by canonical agent-id order on side_effect:evt_000005_00003:hotels_2_api:bookhouse"
+          ]
+        }
+      ],
+      "mutex_pairs": [],
+      "dedup_required_pairs": [
+        {
+          "agents": [
+            "agent_004",
+            "agent_003"
+          ],
+          "reasons": [
+            "dedup_required: duplicate non-idempotent side effect on side_effect:evt_000005_00003:hotels_2_api:bookhouse"
+          ]
+        }
+      ],
+      "has_mandatory_cycle": false,
+      "mandatory_cycle_components": [],
+      "warnings": [],
+      "runtime_ms": 0.533332999999997
+    },
+    {
+      "case_id": "case_000006",
+      "num_agent_tasks": 3,
+      "agents": [
+        "agent_001",
+        "agent_002",
+        "agent_000"
+      ],
+      "mandatory_edges": [
+        {
+          "before": "agent_000",
+          "after": "agent_001",
+          "reasons": [
+            "state_read_write: reader needs latest/final state for field:flights_1:origin_city"
+          ]
+        }
+      ],
+      "mutex_pairs": [],
+      "dedup_required_pairs": [],
+      "has_mandatory_cycle": false,
+      "mandatory_cycle_components": [],
+      "warnings": [],
+      "runtime_ms": 0.15087500000000864
+    },
+    {
+      "case_id": "case_000007",
+      "num_agent_tasks": 5,
+      "agents": [
+        "agent_002",
+        "agent_001",
+        "agent_003",
+        "agent_004",
+        "agent_000"
+      ],
+      "mandatory_edges": [
+        {
+          "before": "agent_002",
+          "after": "agent_003",
+          "reasons": [
+            "data_dependency: output/input match 'token:internal_record_key:field:services_3:street_address'"
+          ]
+        },
+        {
+          "before": "agent_000",
+          "after": "agent_001",
+          "reasons": [
+            "data_dependency: output/input match 'token:internal_record_key:field:hotels_1:check_in_date'"
+          ]
+        }
+      ],
+      "mutex_pairs": [],
+      "dedup_required_pairs": [],
+      "has_mandatory_cycle": false,
+      "mandatory_cycle_components": [],
+      "warnings": [],
+      "runtime_ms": 0.24962499999998944
+    },
+    {
+      "case_id": "case_000008",
+      "num_agent_tasks": 3,
+      "agents": [
+        "agent_002",
+        "agent_000",
+        "agent_001"
+      ],
+      "mandatory_edges": [
+        {
+          "before": "agent_000",
+          "after": "agent_001",
+          "reasons": [
+            "state_read_write: reader needs latest/final state for field:music_3:album"
+          ]
+        }
+      ],
+      "mutex_pairs": [],
+      "dedup_required_pairs": [],
+      "has_mandatory_cycle": false,
+      "mandatory_cycle_components": [],
+      "warnings": [],
+      "runtime_ms": 0.16449999999999798
+    },
+    {
+      "case_id": "case_000009",
+      "num_agent_tasks": 4,
+      "agents": [
+        "agent_000",
+        "agent_003",
+        "agent_001",
+        "agent_002"
+      ],
+      "mandatory_edges": [
+        {
+          "before": "agent_000",
+          "after": "agent_001",
+          "reasons": [
+            "data_dependency: output/input match 'token:internal_record_key:field:payment_1:amount'"
+          ]
+        },
+        {
+          "before": "agent_002",
+          "after": "agent_003",
+          "reasons": [
+            "data_dependency: output/input match 'token:internal_record_key:field:buses_1:to_location'"
+          ]
+        }
+      ],
+      "mutex_pairs": [],
+      "dedup_required_pairs": [],
+      "has_mandatory_cycle": false,
+      "mandatory_cycle_components": [],
+      "warnings": [],
+      "runtime_ms": 0.24412499999999782
+    }
+  ]
+}
