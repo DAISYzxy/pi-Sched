@@ -23,7 +23,6 @@ The code in `src/` implements the following pipeline:
 Use Python 3.10 or later. Clone this repository and install the dependency:
 
 ```bash
-git clone https://github.com/DAISYzxy/pi-Sched.git
 cd pi-Sched
 python -m pip install -r requirements.txt
 ```
